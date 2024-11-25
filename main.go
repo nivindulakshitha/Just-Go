@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math/rand"
+)
 
 func print(text string, method string) {
 	switch method {
@@ -55,6 +58,34 @@ func generateSymbolArray(symbols map[string]uint) []string {
 	}
 
 	return symbolArr
+}
+
+func getRandomNumber(limit int) int {
+	return rand.Intn(limit)
+}
+
+func createSpin(reel []string, rows int, cols int) [][]string {
+	spin := [][]string{}
+	lenth := len(reel)
+
+	for row := 0; row < rows; row++ {
+		spin = append(spin, []string{})
+		selected := map[int]bool{}
+
+		for col := 0; col < cols; col++ {
+			for true {
+				randomNumber := getRandomNumber(lenth)
+
+				if !selected[randomNumber] {
+					selected[randomNumber] = true
+					spin[row][col] = reel[randomNumber]
+					break
+				}
+			}
+		}
+	}
+
+	return spin
 }
 
 func main() {
