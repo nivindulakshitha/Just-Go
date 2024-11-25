@@ -1,13 +1,14 @@
 package main
+
 import "fmt"
 
 func print(text string, method string) {
 	switch method {
-		case "same-line":
-			fmt.Print(text)
-			break
-		default:
-			fmt.Println(text)
+	case "same-line":
+		fmt.Print(text)
+		break
+	default:
+		fmt.Println(text)
 	}
 }
 
@@ -50,7 +51,9 @@ func main() {
 	getName(balance)
 	print("", "new-line")
 
-	bet := getBet(balance)
-	print(fmt.Sprintf("You bet $%d", bet), "new-line")
+	for true {
+		bet := getBet(balance)
+		print(fmt.Sprintf("* You bet $%d", bet), "new-line")
+	}
 
 }
