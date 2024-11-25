@@ -106,6 +106,22 @@ func printSpin(spin [][]string) {
 	print("", "new-line")
 }
 
+func checkWin(spin [][]string, multipliers map[string]uint) []int {
+	lines := []int{}
+
+	for _, row := range spin {
+		symbol := row[0]
+
+		if symbol == row[1] && symbol == row[2] {
+			lines = append(lines, int(multipliers[symbol]))
+		} else {
+			lines = append(lines, 0)
+		}
+	}
+
+	return lines
+}
+
 func main() {
 	symbols := map[string]uint{
 		"A": 4,
@@ -114,12 +130,12 @@ func main() {
 		"D": 20,
 	}
 
-	/* multipliers := map[string]uint {
+	multipliers := map[string]uint{
 		"A": 20,
 		"B": 15,
 		"C": 7,
 		"D": 4,
-	} */
+	}
 
 	arr := generateSymbolArray(symbols)
 
@@ -141,6 +157,8 @@ func main() {
 
 		spin := createSpin(arr, 3, 3)
 		printSpin(spin)
+
+		winningLines := checkWin(spin, multipliers)
 
 	}
 
