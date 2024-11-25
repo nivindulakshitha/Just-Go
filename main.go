@@ -53,9 +53,18 @@ func main() {
 
 	for true {
 		bet := getBet(balance)
-		print(fmt.Sprintf("* You bet $%d", bet), "new-line")
-		print("", "new-line")
+
+		if bet == 0 {
+			break
+		}
+
 		balance -= bet
+		print(fmt.Sprintf("* You bet $%d, ", bet), "same-line")
+		print(fmt.Sprintf("having balance of $%d currently.", balance), "new-line")
+		print("", "new-line")
 	}
+
+	print(fmt.Sprintf("\nNow you have $%d", balance), "new-line")
+	print("Thank you for join, see you next time!", "same-line")
 
 }
