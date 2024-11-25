@@ -54,6 +54,8 @@ func main() {
 	for true {
 		bet := getBet(balance)
 		print(fmt.Sprintf("* You bet $%d", bet), "new-line")
+		print("", "new-line")
+		balance -= bet
 	}
 
 }
