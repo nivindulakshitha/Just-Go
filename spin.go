@@ -29,7 +29,7 @@ func CreateSpin(reel []string, rows int, cols int) [][]string {
 		selected := map[int]bool{}
 
 		for col := 0; col < cols; col++ {
-			for true {
+			for {
 				randomNumber := GetRandomNumber(lenth)
 
 				if !selected[randomNumber] {

@@ -21,8 +21,8 @@ func GetName(balance uint) string {
 func GetBet(balance uint) uint {
 	var bet uint
 
-	for true {
-		Print("What's your bet (0 to quit)? $", "same-line")
+	for {
+		Print(fmt.Sprintf("What's your bet having *$%d currently (0 to quit)? $", balance), "same-line")
 		fmt.Scan(&bet)
 
 		if bet > balance {

@@ -42,7 +42,7 @@ func main() {
 	GetName(balance)
 	Print("", "new-line")
 
-	for true {
+	for {
 		bet := GetBet(balance)
 
 		if bet == 0 {
@@ -61,7 +61,7 @@ func main() {
 		for _, win := range winningLines {
 			if win > 0 {
 				balance += uint(win * int(bet))
-				Print(fmt.Sprintf("You won $%d ($%dx%d), balance is $%d", win*int(bet), bet, win, balance), "new-line")
+				Print(fmt.Sprintf("You won $%d ($%dx%d)!", win*int(bet), bet, win), "new-line")
 			}
 		}
 
