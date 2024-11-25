@@ -4,16 +4,6 @@ import (
 	"fmt"
 )
 
-func print(text string, method string) {
-	switch method {
-	case "same-line":
-		fmt.Print(text)
-		break
-	default:
-		fmt.Println(text)
-	}
-}
-
 func checkWin(spin [][]string, multipliers map[string]uint) []int {
 	lines := []int{}
 
@@ -50,7 +40,7 @@ func main() {
 	balance := uint(200)
 
 	GetName(balance)
-	print("", "new-line")
+	Print("", "new-line")
 
 	for true {
 		bet := GetBet(balance)
@@ -60,8 +50,8 @@ func main() {
 		}
 
 		balance -= bet
-		print(fmt.Sprintf("* You bet $%d, ", bet), "same-line")
-		print(fmt.Sprintf("having balance of $%d currently.", balance), "new-line")
+		Print(fmt.Sprintf("* You bet $%d, ", bet), "same-line")
+		Print(fmt.Sprintf("having balance of $%d currently.", balance), "new-line")
 
 		spin := CreateSpin(arr, 3, 3)
 		PrintSpin(spin)
@@ -71,13 +61,13 @@ func main() {
 		for _, win := range winningLines {
 			if win > 0 {
 				balance += uint(win * int(bet))
-				print(fmt.Sprintf("You won $%d ($%dx%d), balance is $%d", win*int(bet), bet, win, balance), "new-line")
+				Print(fmt.Sprintf("You won $%d ($%dx%d), balance is $%d", win*int(bet), bet, win, balance), "new-line")
 			}
 		}
 
 	}
 
-	print(fmt.Sprintf("\nNow you have $%d", balance), "new-line")
-	print("Thank you for join, see you next time!", "same-line")
+	Print(fmt.Sprintf("\nNow you have $%d", balance), "new-line")
+	Print("Thank you for join, see you next time!", "same-line")
 
 }

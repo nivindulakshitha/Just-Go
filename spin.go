@@ -45,19 +45,19 @@ func CreateSpin(reel []string, rows int, cols int) [][]string {
 }
 
 func PrintSpin(spin [][]string) {
-	print("", "new-line")
+	Print("", "new-line")
 
 	for _, row := range spin {
 		for index, symbol := range row {
-			print(symbol, "same-line")
+			Print(symbol, "same-line")
 
 			if index != len(row)-1 {
-				print(" | ", "same-line")
+				Print(" | ", "same-line")
 			}
 		}
 
-		print("", "new-line")
+		Print("", "new-line")
 	}
 
-	print("", "new-line")
+	Print("", "new-line")
 }
