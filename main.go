@@ -15,39 +15,6 @@ func print(text string, method string) {
 	}
 }
 
-func getName(balance uint) string {
-	name := ""
-
-	print("Welcome to Tim's Casino!", "new-line")
-	print("Enter your name: ", "same-line")
-	_, err := fmt.Scanf("%s", &name)
-
-	if err != nil {
-		return ""
-	}
-
-	print(fmt.Sprintf("Hello, %s! ", name), "same-line")
-	print(fmt.Sprintf("Your balance is $%d", balance), "new-line")
-	return name
-}
-
-func getBet(balance uint) uint {
-	var bet uint
-
-	for true {
-		print("What's your bet (0 to quit)? $", "same-line")
-		fmt.Scan(&bet)
-
-		if bet > balance {
-			print(fmt.Sprintf("Insufficient funds. You have only $%d", balance), "new-line")
-		} else {
-			break
-		}
-	}
-
-	return bet
-}
-
 func generateSymbolArray(symbols map[string]uint) []string {
 	symbolArr := []string{}
 
@@ -141,11 +108,11 @@ func main() {
 
 	balance := uint(200)
 
-	getName(balance)
+	GetName(balance)
 	print("", "new-line")
 
 	for true {
-		bet := getBet(balance)
+		bet := GetBet(balance)
 
 		if bet == 0 {
 			break
