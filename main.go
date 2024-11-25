@@ -11,7 +11,7 @@ func print(text string, method string) {
 	}
 }
 
-func getName() string {
+func getName(balance uint) string {
 	name := ""
 
 	print("Welcome to Tim's Casino!", "new-line")
@@ -23,9 +23,34 @@ func getName() string {
 	}
 
 	print(fmt.Sprintf("Hello, %s!", name), "new-line")
+	print(fmt.Sprintf("Your balance is $%d", balance), "new-line")
 	return name
 }
 
+func getBet(balance uint) uint {
+	var bet uint
+
+	for true {
+		print("What's your bet (0 to quit)? $", "same-line")
+		fmt.Scan(&bet)
+
+		if bet > balance {
+			print(fmt.Sprintf("Insufficient funds. You have only $%d", balance), "new-line")
+		} else {
+			break
+		}
+	}
+
+	return bet
+}
+
 func main() {
-	getName()
+	balance := uint(200)
+
+	getName(balance)
+	print("", "new-line")
+
+	bet := getBet(balance)
+	print(fmt.Sprintf("You bet $%d", bet), "new-line")
+
 }
