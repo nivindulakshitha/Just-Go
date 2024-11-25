@@ -78,7 +78,7 @@ func createSpin(reel []string, rows int, cols int) [][]string {
 
 				if !selected[randomNumber] {
 					selected[randomNumber] = true
-					spin[row][col] = reel[randomNumber]
+					spin[row] = append(spin[row], reel[randomNumber])
 					break
 				}
 			}
@@ -104,6 +104,8 @@ func main() {
 	} */
 
 	arr := generateSymbolArray(symbols)
+	spin := createSpin(arr, 3, 3)
+	fmt.Print(spin)
 
 	balance := uint(200)
 
