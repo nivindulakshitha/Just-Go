@@ -91,9 +91,7 @@ func createSpin(reel []string, rows int, cols int) [][]string {
 func printSpin(spin [][]string) {
 	print("", "new-line")
 
-	for index, row := range spin {
-		print(fmt.Sprintf("%d - ", index + 1), "same-line")
-
+	for _, row := range spin {
 		for index, symbol := range row {
 			print(symbol, "same-line")
 
@@ -162,10 +160,10 @@ func main() {
 
 		winningLines := checkWin(spin, multipliers)
 
-		for line, win := range winningLines {
+		for _, win := range winningLines {
 			if win > 0 {
-				balance = uint(win * int(bet))
-				print(fmt.Sprintf("You won $%d (x%d) for line 0%d", win * int(bet), win, line), "new-line")
+				balance += uint(win * int(bet))
+				print(fmt.Sprintf("You won $%d ($%dx%d), balance is $%d", win*int(bet), bet, win, balance), "new-line")
 			}
 		}
 
