@@ -26,7 +26,7 @@ func getName(balance uint) string {
 		return ""
 	}
 
-	print(fmt.Sprintf("Hello, %s!", name), "new-line")
+	print(fmt.Sprintf("Hello, %s! ", name), "same-line")
 	print(fmt.Sprintf("Your balance is $%d", balance), "new-line")
 	return name
 }
@@ -88,6 +88,24 @@ func createSpin(reel []string, rows int, cols int) [][]string {
 	return spin
 }
 
+func printSpin(spin [][]string) {
+	print("", "new-line")
+
+	for _, row := range spin {
+		for index, symbol := range row {
+			print(symbol, "same-line")
+
+			if index != len(row)-1 {
+				print(" | ", "same-line")
+			}
+		}
+
+		print("", "new-line")
+	}
+
+	print("", "new-line")
+}
+
 func main() {
 	symbols := map[string]uint{
 		"A": 4,
@@ -104,8 +122,6 @@ func main() {
 	} */
 
 	arr := generateSymbolArray(symbols)
-	spin := createSpin(arr, 3, 3)
-	fmt.Print(spin)
 
 	balance := uint(200)
 
@@ -122,7 +138,10 @@ func main() {
 		balance -= bet
 		print(fmt.Sprintf("* You bet $%d, ", bet), "same-line")
 		print(fmt.Sprintf("having balance of $%d currently.", balance), "new-line")
-		print("", "new-line")
+
+		spin := createSpin(arr, 3, 3)
+		printSpin(spin)
+
 	}
 
 	print(fmt.Sprintf("\nNow you have $%d", balance), "new-line")
