@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"math/rand"
 )
 
 func print(text string, method string) {
@@ -13,64 +12,6 @@ func print(text string, method string) {
 	default:
 		fmt.Println(text)
 	}
-}
-
-func generateSymbolArray(symbols map[string]uint) []string {
-	symbolArr := []string{}
-
-	for symbol, count := range symbols {
-		for i := uint(0); i < count; i++ {
-			symbolArr = append(symbolArr, symbol)
-		}
-	}
-
-	return symbolArr
-}
-
-func getRandomNumber(limit int) int {
-	return rand.Intn(limit)
-}
-
-func createSpin(reel []string, rows int, cols int) [][]string {
-	spin := [][]string{}
-	lenth := len(reel)
-
-	for row := 0; row < rows; row++ {
-		spin = append(spin, []string{})
-		selected := map[int]bool{}
-
-		for col := 0; col < cols; col++ {
-			for true {
-				randomNumber := getRandomNumber(lenth)
-
-				if !selected[randomNumber] {
-					selected[randomNumber] = true
-					spin[row] = append(spin[row], reel[randomNumber])
-					break
-				}
-			}
-		}
-	}
-
-	return spin
-}
-
-func printSpin(spin [][]string) {
-	print("", "new-line")
-
-	for _, row := range spin {
-		for index, symbol := range row {
-			print(symbol, "same-line")
-
-			if index != len(row)-1 {
-				print(" | ", "same-line")
-			}
-		}
-
-		print("", "new-line")
-	}
-
-	print("", "new-line")
 }
 
 func checkWin(spin [][]string, multipliers map[string]uint) []int {
@@ -104,7 +45,7 @@ func main() {
 		"D": 4,
 	}
 
-	arr := generateSymbolArray(symbols)
+	arr := GenerateSymbolArray(symbols)
 
 	balance := uint(200)
 
@@ -122,8 +63,8 @@ func main() {
 		print(fmt.Sprintf("* You bet $%d, ", bet), "same-line")
 		print(fmt.Sprintf("having balance of $%d currently.", balance), "new-line")
 
-		spin := createSpin(arr, 3, 3)
-		printSpin(spin)
+		spin := CreateSpin(arr, 3, 3)
+		PrintSpin(spin)
 
 		winningLines := checkWin(spin, multipliers)
 
